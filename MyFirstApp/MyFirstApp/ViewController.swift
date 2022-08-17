@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
+    @IBOutlet weak var myButton: UIButton!
     @IBOutlet weak var mainLabel: UILabel!
     
     
@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
+        myButton.setTitle("버튼", for: .normal)
         mainLabel.text = "반갑습니다"
         
     }
