@@ -8,12 +8,21 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    
+    @IBOutlet weak var mainLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        
+        mainLabel.text = "반갑습니다"
+        
+    }
+    
 }
 
