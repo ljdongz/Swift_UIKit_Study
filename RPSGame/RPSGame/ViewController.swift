@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var comChoiceLabel: UILabel!
     @IBOutlet weak var myChoiceLabel: UILabel!
     
-    let rpsImages: [UIImage] = [#imageLiteral(resourceName: "scissors"), #imageLiteral(resourceName: "rock"), #imageLiteral(resourceName: "paper")]
+    var comChoice: Rps!
+    var myChoice: Rps = .rock
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,41 +27,47 @@ class ViewController: UIViewController {
 
 
     @IBAction func rpsButtonTapped(_ sender: UIButton) {
-        let btnTitle: String! = sender.title(for: .normal)
-        
+        let btnTitle = sender.currentTitle
+        mainLabel.text = "선택 중..."
         switch btnTitle{
         case "가위" :
-            myImageView.image = rpsImages[0]
+            myChoice = .scissors
+            myImageView.image = UIImage(named: "scissors")
             myChoiceLabel.text = "가위"
         case "바위" :
-            myImageView.image = rpsImages[1]
+            myChoice = .rock
+            myImageView.image = UIImage(named: "rock")
             myChoiceLabel.text = "바위"
         case "보" :
-            myImageView.image = rpsImages[2]
+            myChoice = .paper
+            myImageView.image = UIImage(named: "paper")
             myChoiceLabel.text = "보"
-        default : return
-
+        default : break
         }
     }
     
     @IBAction func selectButtonTapped(_ sender: UIButton) {
-        comImageView.image = rpsImages.randomElement()
-        let comImage = comImageView.image
-        let myImage = myImageView.image
+        comChoice = Rps(rawValue: Int.random(in: 0...2))
         
-        switch comImageView.image{
-        case rpsImages[0] : comChoiceLabel.text = "가위"
-        case rpsImages[1] : comChoiceLabel.text = "바위"
-        case rpsImages[2] : comChoiceLabel.text = "보"
-        default : return
+        switch comChoice{
+        case .rock :
+            comImageView.image = UIImage(named: "rock")
+            comChoiceLabel.text = "바위"
+        case .scissors :
+            comImageView.image = UIImage(named: "scissors")
+            comChoiceLabel.text = "가위"
+        case .paper :
+            comImageView.image = UIImage(named: "paper")
+            comChoiceLabel.text = "보"
+        default: break
         }
-
-        if (comImage == myImage){
+        
+        if comChoice == myChoice{
             mainLabel.text = "비겼습니다"
-        }else if(
-            (comImage == rpsImages[0] && myImage == rpsImages[1]) ||
-            (comImage == rpsImages[1] && myImage == rpsImages[2]) ||
-            (comImage == rpsImages[2] && myImage == rpsImages[0])
+        }else if (
+            (comChoice == .paper && myChoice == .scissors) ||
+            (comChoice == .scissors && myChoice == .rock) ||
+            (comChoice == .rock && myChoice == .paper)
         ){
             mainLabel.text = "이겼습니다"
         }else{
@@ -68,9 +76,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func resetButtonTapped(_ sender: UIButton) {
-        comImageView.image = #imageLiteral(resourceName: "ready")
-        myImageView.image = #imageLiteral(resourceName: "ready")
         mainLabel.text = "선택하세요"
+        myImageView.image = UIImage(named: "ready")
+        comImageView.image = UIImage(named: "ready")
         myChoiceLabel.text = "준비"
         comChoiceLabel.text = "준비"
     }
