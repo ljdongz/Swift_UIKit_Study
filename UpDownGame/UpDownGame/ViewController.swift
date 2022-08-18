@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberLabel: UILabel!
     
     var randomNumber: Int = 0
-    var currentNumber: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,18 +30,18 @@ class ViewController: UIViewController {
         // numberLabel text 변경
         numberLabel.text = numString
         
-        // 선택한 숫자를 변수에 저장
-        guard let num = Int(numString) else { return }
-        currentNumber = num
     }
     
     @IBAction func selectButtonTapped(_ sender: UIButton) {
         
-        if (currentNumber == 0){
-            mainLabel.text = "숫자를 입력하세요"
-        }else if (currentNumber==randomNumber){
+        guard let numString = numberLabel.text else { return }
+        guard let number = Int(numString) else {
+            print("숫자 입력"); return
+        }
+        
+        if (number==randomNumber){
             mainLabel.text = "Bingo"
-        }else if(currentNumber > randomNumber){
+        }else if(number > randomNumber){
             mainLabel.text = "Down"
         }else{
             mainLabel.text = "Up"
@@ -54,7 +53,6 @@ class ViewController: UIViewController {
         mainLabel.text = "선택하세요"
         numberLabel.text = ""
         randomNumber = Int.random(in: 1...10)
-        currentNumber = 0
     }
 }
 
