@@ -9,11 +9,63 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var mainLabel: UILabel!
+    
+    @IBOutlet weak var comImageView: UIImageView!
+    @IBOutlet weak var myImageView: UIImageView!
+ 
+    @IBOutlet weak var comChoiceLabel: UILabel!
+    @IBOutlet weak var myChoiceLabel: UILabel!
+    
+    let rpsImages: [UIImage] = [#imageLiteral(resourceName: "scissors"), #imageLiteral(resourceName: "rock"), #imageLiteral(resourceName: "paper")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
 
+    @IBAction func rpsButtonTapped(_ sender: UIButton) {
+        let btnTitle: String = sender.title(for: .normal)!
+        switch btnTitle{
+            
+        case "가위" :
+            myImageView.image = rpsImages[0]
+            myChoiceLabel.text = "가위"
+        case "바위" :
+            myImageView.image = rpsImages[1]
+            myChoiceLabel.text = "바위"
+        case "보" :
+            myImageView.image = rpsImages[2]
+            myChoiceLabel.text = "보"
+        default : return
+            
+        }
+    }
+    
+    @IBAction func selectButtonTapped(_ sender: UIButton) {
+        comImageView.image = rpsImages.randomElement()
+        let comImage = comImageView.image
+        let myImage = myImageView.image
+        
+        if (comImage == myImage){
+            mainLabel.text = "비겼습니다"
+        }else if(
+            (comImage == rpsImages[0] && myImage == rpsImages[1]) ||
+            (comImage == rpsImages[1] && myImage == rpsImages[2]) ||
+            (comImage == rpsImages[2] && myImage == rpsImages[0])
+        ){
+            mainLabel.text = "이겼습니다"
+        }else{
+            mainLabel.text = "졌습니다"
+        }
+    }
+    
+    @IBAction func resetButtonTapped(_ sender: UIButton) {
+        comImageView.image = #imageLiteral(resourceName: "ready")
+        myImageView.image = #imageLiteral(resourceName: "ready")
+        mainLabel.text = "선택하세요"
+    }
+    
+    
 }
 
