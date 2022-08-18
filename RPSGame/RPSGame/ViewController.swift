@@ -25,9 +25,9 @@ class ViewController: UIViewController {
 
 
     @IBAction func rpsButtonTapped(_ sender: UIButton) {
-        let btnTitle: String = sender.title(for: .normal)!
+        let btnTitle: String! = sender.title(for: .normal)
+        
         switch btnTitle{
-            
         case "가위" :
             myImageView.image = rpsImages[0]
             myChoiceLabel.text = "가위"
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
             myImageView.image = rpsImages[2]
             myChoiceLabel.text = "보"
         default : return
-            
+
         }
     }
     
@@ -47,6 +47,13 @@ class ViewController: UIViewController {
         let comImage = comImageView.image
         let myImage = myImageView.image
         
+        switch comImageView.image{
+        case rpsImages[0] : comChoiceLabel.text = "가위"
+        case rpsImages[1] : comChoiceLabel.text = "바위"
+        case rpsImages[2] : comChoiceLabel.text = "보"
+        default : return
+        }
+
         if (comImage == myImage){
             mainLabel.text = "비겼습니다"
         }else if(
@@ -64,6 +71,8 @@ class ViewController: UIViewController {
         comImageView.image = #imageLiteral(resourceName: "ready")
         myImageView.image = #imageLiteral(resourceName: "ready")
         mainLabel.text = "선택하세요"
+        myChoiceLabel.text = "준비"
+        comChoiceLabel.text = "준비"
     }
     
     
