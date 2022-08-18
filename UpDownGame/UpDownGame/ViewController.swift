@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     var randomNumber: Int = 0
     var currentNumber: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,22 +24,23 @@ class ViewController: UIViewController {
 
     
     @IBAction func numButtonTapped(_ sender: UIButton) {
-        numberLabel.text = sender.currentTitle
+        
+        // 입력한 버튼의 숫자를 가져옴
+        guard let numString = sender.currentTitle else { return }
+        
+        // numberLabel text 변경
+        numberLabel.text = numString
+        
+        // 선택한 숫자를 변수에 저장
+        guard let num = Int(numString) else { return }
+        currentNumber = num
     }
     
     @IBAction func selectButtonTapped(_ sender: UIButton) {
-        // numberLabel text의 옵셔널 제거
-        if let text = numberLabel.text{
-            // numberLabel text가 Int로 치환되는지 확인
-            if let curNum = Int(text) {
-                currentNumber = curNum
-            }else{
-                print("숫자 입력 부탁")
-                return
-            }
-        }
         
-        if (currentNumber==randomNumber){
+        if (currentNumber == 0){
+            mainLabel.text = "숫자를 입력하세요"
+        }else if (currentNumber==randomNumber){
             mainLabel.text = "Bingo"
         }else if(currentNumber > randomNumber){
             mainLabel.text = "Down"
@@ -51,6 +53,8 @@ class ViewController: UIViewController {
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         mainLabel.text = "선택하세요"
         numberLabel.text = ""
+        randomNumber = Int.random(in: 1...10)
+        currentNumber = 0
     }
 }
 
