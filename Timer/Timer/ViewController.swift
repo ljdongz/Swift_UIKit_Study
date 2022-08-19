@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -14,9 +15,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var slider: UISlider!
     
-    
     var timer = Timer()
-    let content = UNMutableNotificationContent()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +39,7 @@ class ViewController: UIViewController {
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         slider.value = 30
         mainLabel.text = "초를 선택하세요"
-        content.sound = .defaultCritical
+        
     }
     
     func configureUI(){
@@ -53,6 +52,7 @@ class ViewController: UIViewController {
         if (slider.value - 1) < 0 {
             timer.invalidate()
             mainLabel.text = "종료"
+            AudioServicesPlayAlertSound(SystemSoundID(1322))
         }else{
             slider.value -= 1
             mainLabel.text = String(Int(slider.value))
