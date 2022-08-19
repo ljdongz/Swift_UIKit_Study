@@ -19,12 +19,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         // textField의 대리자(deletgate)를 ViewController로 설정
         textField.delegate = self
         
+        // 화면 터치 시 키보드 내려감
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         setupUI()
+    }
+    
+    
+    
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
 
 
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
+        // 첫 번째로 포커스된 텍스트필드를 해임
+        textField.resignFirstResponder()
     }
     
     
@@ -36,6 +49,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.placeholder = "Email Address"
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = .done
+        
+        // 화면에서 텍스트필드가 첫 번째로 반응하도록 설정 (키보드가 자동으로 올라옴)
+        // 유저한테 먼저 반응할 것을 포커스 시켜줌
+        textField.becomeFirstResponder()
          
     }
     
@@ -62,13 +79,23 @@ class ViewController: UIViewController, UITextFieldDelegate {
     // 4. 텍스트필드에 한글자 한글자 입력되거나 지워질 때 호출이 되도록 허락 - 선택
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         print(#function)
-        print(string)
-        return true
+        
+        guard let textFieldText = textField.text,
+            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                return false
+        }
+        let substringToReplace = textFieldText[rangeOfTextToReplace]
+        let count = textFieldText.count - substringToReplace.count + string.count
+        return count <= 5 // 입력 가능한 글자 수
+        
     }
     
     // 5. 텍스트필드의 엔터가 눌러지면 다음 동작을 허락할 것인지 말것인지 - 선택
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print(#function)
+        
+        // 첫 번째로 포커스된 텍스트필드를 해임
+        textField.resignFirstResponder()
         return true
     }
     
