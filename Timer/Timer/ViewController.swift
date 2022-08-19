@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     @IBAction func resetButtonTapped(_ sender: UIButton) {
         slider.value = 30
         mainLabel.text = "초를 선택하세요"
-        
+        timer.invalidate()
     }
     
     func configureUI(){
