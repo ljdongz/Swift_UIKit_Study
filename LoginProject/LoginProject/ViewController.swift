@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         button.setTitle("표시", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        //button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
+        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         
         return button
     }()
@@ -139,7 +139,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        //button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -230,6 +230,31 @@ class ViewController: UIViewController {
             
         ])
 
+    }
+    
+    // MARK: - @objc passwordSecureModeSetting()
+    @objc func passwordSecureModeSetting() {
+        passwordTextField.isSecureTextEntry.toggle()
+    }
+    
+    // MARK: - @objc resetButtonTapped()
+    @objc func resetButtonTapped() {
+        let alert = UIAlertController(title: "비밀번호 변경", message: "비밀번호를 바꾸시겠습니까?", preferredStyle: .alert)
+        
+        let success = UIAlertAction(title: "확인", style: .default) { action in
+            print("확인 버튼 눌림")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel) { action in
+            print("취소 버튼 눌림")
+        }
+        
+        alert.addAction(success)
+        alert.addAction(cancel)
+        
+        // 다음 화면으로 넘어가는 메서드
+        present(alert, animated: true) {
+            print("비밀번호 재설정 버튼 눌림")
+        }
     }
 
 
