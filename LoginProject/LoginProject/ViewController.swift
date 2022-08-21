@@ -11,6 +11,11 @@ class ViewController: UIViewController {
     
     private let textViewHeight: CGFloat = 48
     
+    lazy var emailInfoLabelCenterYConstraint = emailInfoLabel.centerYAnchor
+        .constraint(equalTo: emailTextFieldView.centerYAnchor)
+    lazy var passwordInfoLabelCenterYConstraint = passwordInfoLabel
+        .centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor)
+    
     // MARK: - 이메일 입력하는 텍스트 뷰
     private lazy var emailTextFieldView: UIView = {
         let view = UIView()
@@ -148,6 +153,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
+        
         makeUI()
     }
     
@@ -172,8 +180,8 @@ class ViewController: UIViewController {
                 .constraint(equalTo: emailTextFieldView.leadingAnchor, constant: 8),
             emailInfoLabel.trailingAnchor
                 .constraint(equalTo: emailTextFieldView.trailingAnchor, constant: -8),
-            emailInfoLabel.centerYAnchor
-                .constraint(equalTo: emailTextFieldView.centerYAnchor),
+            //emailInfoLabel.centerYAnchor.constraint(equalTo: emailTextFieldView.centerYAnchor), // 고정
+            emailInfoLabelCenterYConstraint, // 수정 가능
             
             // 이메일 입력 필드
             emailTextField.leadingAnchor
@@ -190,8 +198,8 @@ class ViewController: UIViewController {
                 .constraint(equalTo: passwordTextFieldView.leadingAnchor, constant: 8),
             passwordInfoLabel.trailingAnchor
                 .constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
-            passwordInfoLabel.centerYAnchor
-                .constraint(equalTo: passwordTextFieldView.centerYAnchor),
+            //passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor), // 고정
+            passwordInfoLabelCenterYConstraint, // 수정 가능
             
             // 패스워드 입력 필드
             passwordTextField.topAnchor
@@ -260,3 +268,52 @@ class ViewController: UIViewController {
 
 }
 
+
+// MARK: - 뷰컨트롤 텍스트필드 델리게이트
+extension ViewController: UITextFieldDelegate {
+    
+    // 텍스트필드의 입력이 시작될 때
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            // 오토레이아웃 업데이트
+            emailInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        if textField == passwordTextField {
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+            passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
+            // 오토레이아웃 업데이트
+            passwordInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        // 오토레이아웃이 변경될 때 실행
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
+    }
+    
+    // 텍스트필드의 입력이 끝날 때
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
+            // 오토레이아웃 업데이트
+            emailInfoLabelCenterYConstraint.constant = 0
+        }
+        
+        if textField == passwordTextField {
+            passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
+            // 오토레이아웃 업데이트
+            passwordInfoLabelCenterYConstraint.constant = 0
+        }
+        
+        // 오토레이아웃이 변경될 때 실행
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
+    }
+    
+}
