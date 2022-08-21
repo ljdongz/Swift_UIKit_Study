@@ -7,7 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+// 상속을 못하도록 막아 메소드가 다이렉트 디스패치가 되도록 함
+final class ViewController: UIViewController {
     
     private let textViewHeight: CGFloat = 48
     
@@ -264,6 +265,7 @@ class ViewController: UIViewController {
             print("비밀번호 재설정 버튼 눌림")
         }
     }
+    
 
     // MARK: - @objc textFieldEditingChanged()
     @objc func textFieldEditingChanged(textField: UITextField) {
