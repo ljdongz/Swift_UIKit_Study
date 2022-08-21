@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         tf.autocorrectionType = .no // 틀린 단어 자동 변경
         tf.spellCheckingType = .no
         tf.keyboardType = .emailAddress
-        //tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        tf.addTarget(ViewController.self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return tf
     }()
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         tf.spellCheckingType = .no
         tf.isSecureTextEntry = true
         tf.clearsOnBeginEditing = false
-        //tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        tf.addTarget(ViewController.self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return tf
     }()
@@ -102,7 +102,7 @@ class ViewController: UIViewController {
         button.setTitle("표시", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
+        button.addTarget(ViewController.self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         
         return button
     }()
@@ -118,7 +118,7 @@ class ViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false
-        //button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(ViewController.self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -144,7 +144,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        button.addTarget(ViewController.self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -265,7 +265,33 @@ class ViewController: UIViewController {
         }
     }
 
+    // MARK: - @objc textFieldEditingChanged()
+    @objc func textFieldEditingChanged(textField: UITextField) {
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let email = emailTextField.text, !email.isEmpty,
+            let password = passwordTextField.text, !password.isEmpty
+        else{
+            loginButton.backgroundColor = .clear
+            loginButton.isEnabled = false
+            return
+        }
+        loginButton.backgroundColor = .red
+        loginButton.isEnabled = true
+    }
+    
+    @objc func loginButtonTapped() {
+        print("로그인 버튼이 눌림")
+    }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
 
@@ -277,20 +303,25 @@ extension ViewController: UITextFieldDelegate {
         if textField == emailTextField {
             emailTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
-            // 오토레이아웃 업데이트
+            // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙에서 위로 13만큼 이동)
             emailInfoLabelCenterYConstraint.constant = -13
         }
         
         if textField == passwordTextField {
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
-            // 오토레이아웃 업데이트
+            // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙에서 위로 13만큼 이동)
             passwordInfoLabelCenterYConstraint.constant = -13
         }
         
         // 오토레이아웃이 변경될 때 실행
         UIView.animate(withDuration: 0.3) {
             self.stackView.layoutIfNeeded()
+            
+            /*
+            self.emailTextFieldView.layoutIfNeeded()
+            self.passwordTextFieldView.layoutIfNeeded()
+            */
         }
     }
     
@@ -298,15 +329,19 @@ extension ViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == emailTextField {
             emailTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            
+            if textField.text != "" { return }
             emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
-            // 오토레이아웃 업데이트
+            // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙으로 이동)
             emailInfoLabelCenterYConstraint.constant = 0
         }
         
         if textField == passwordTextField {
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+            
+            if textField.text != "" { return }
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
-            // 오토레이아웃 업데이트
+            // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙으로 이동)
             passwordInfoLabelCenterYConstraint.constant = 0
         }
         
