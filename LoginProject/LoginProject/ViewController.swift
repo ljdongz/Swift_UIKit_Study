@@ -41,7 +41,7 @@ final class ViewController: UIViewController {
         tf.autocorrectionType = .no // 틀린 단어 자동 변경
         tf.spellCheckingType = .no
         tf.keyboardType = .emailAddress
-        tf.addTarget(ViewController.self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        tf.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return tf
     }()
@@ -83,7 +83,7 @@ final class ViewController: UIViewController {
         tf.spellCheckingType = .no
         tf.isSecureTextEntry = true
         tf.clearsOnBeginEditing = false
-        tf.addTarget(ViewController.self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        tf.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
         
         return tf
     }()
@@ -103,7 +103,7 @@ final class ViewController: UIViewController {
         button.setTitle("표시", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .light)
-        button.addTarget(ViewController.self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
+        button.addTarget(self, action: #selector(passwordSecureModeSetting), for: .touchUpInside)
         
         return button
     }()
@@ -119,7 +119,7 @@ final class ViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.isEnabled = false
-        button.addTarget(ViewController.self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -145,7 +145,7 @@ final class ViewController: UIViewController {
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
-        button.addTarget(ViewController.self, action: #selector(resetButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(resetButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -221,7 +221,7 @@ final class ViewController: UIViewController {
                 .constraint(equalTo: passwordTextFieldView.trailingAnchor, constant: -8),
             
             // 스택 뷰
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            //stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
