@@ -31,7 +31,7 @@ final class ViewController: UIViewController {
     }()
     
     // 로그인 - 이메일 입력 필드
-    private var emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         var tf = UITextField()
         tf.frame.size.height = 48
         tf.backgroundColor = .clear
@@ -71,7 +71,7 @@ final class ViewController: UIViewController {
     }()
     
     // 로그인 - 비밀번호 입력 필드
-    private let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let tf = UITextField()
         tf.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         tf.frame.size.height = 48
@@ -98,7 +98,7 @@ final class ViewController: UIViewController {
     }()
     
     // 패스워드 필드에 "표시"버튼 비밀번호 가리기 기능
-    private let passwordSecureButton: UIButton = {
+    private lazy var passwordSecureButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitle("표시", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
@@ -109,7 +109,7 @@ final class ViewController: UIViewController {
     }()
     
     // MARK: - 로그인 버튼
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 5
@@ -140,7 +140,7 @@ final class ViewController: UIViewController {
     }()
     
     // MARK: - 비밀번호 재설정 버튼
-    private let passwordResetButton: UIButton = {
+    private lazy var passwordResetButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
