@@ -42,10 +42,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-T3-0RE">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="kg" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EzJ-T3-0RE">
                                                 <rect key="frame" x="55" y="0.0" width="299" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <connections>
+                                                    <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="Abu-8B-G0z"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -64,10 +67,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RFG-fH-GEW">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="cm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RFG-fH-GEW">
                                                 <rect key="frame" x="55" y="0.0" width="299" height="35"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <connections>
+                                                    <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="mFe-dj-cbV"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -78,7 +84,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8W-V4-tbm">
                                 <rect key="frame" x="20" y="787" width="374" height="45"/>
-                                <color key="backgroundColor" name="AccentColor"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Zy4-bl-9gS"/>
                                 </constraints>
@@ -104,6 +110,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="calcButton" destination="F8W-V4-tbm" id="L6L-Lz-js1"/>
                         <outlet property="heightTextField" destination="EzJ-T3-0RE" id="4Tp-pZ-cfh"/>
                         <outlet property="weightTextField" destination="RFG-fH-GEW" id="2bd-iv-hQH"/>
                     </connections>

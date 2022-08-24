@@ -38,6 +38,11 @@ class BmiResultVC: UIViewController {
         }
     }
     
+    func makeUI() {
+        mainLabel.layer.cornerRadius = 8
+        mainLabel.clipsToBounds = true
+    }
+    
     func calcBMI(height: Double, weight: Double) -> Double {
         
         return weight / (height * height / 10000)
