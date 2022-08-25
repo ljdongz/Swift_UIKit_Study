@@ -9,8 +9,7 @@ import UIKit
 
 class BmiResultVC: UIViewController {
 
-    var height: Double?
-    var weight: Double?
+    var body: Body?
     
     var bmiManager = BMICalculatorManager()
     
@@ -25,13 +24,14 @@ class BmiResultVC: UIViewController {
     
     func makeUI() {
         
-        bmiManager.calcBMI(height: height!, weight: weight!)
-        let bg = bmiManager.getBackgroundColor(BMI: bmiManager.bmi!)
-        let adviceStr = bmiManager.getBMIAdviceString(BMI: bmiManager.bmi!)
+        bmiManager.calcBMI(height: body!.height, weight: body!.weight)
+        let bmi = bmiManager.getBMI()
+        let bg = bmiManager.getBackgroundColor(BMI: bmi)
+        let adviceStr = bmiManager.getBMIAdviceString(BMI: bmi)
         
         mainLabel.layer.cornerRadius = 8
         mainLabel.clipsToBounds = true
-        mainLabel.text = String(format: "%.2f", bmiManager.bmi!)
+        mainLabel.text = String(format: "%.2f", bmi)
         mainLabel.backgroundColor = bg
         subLabel.text = adviceStr
     }

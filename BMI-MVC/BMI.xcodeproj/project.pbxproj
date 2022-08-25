@@ -15,6 +15,7 @@
 		570FD99A28B5AAA8006639CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570FD99828B5AAA8006639CB /* LaunchScreen.storyboard */; };
 		5724ED4B28B695C000329953 /* BmiResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5724ED4A28B695C000329953 /* BmiResultVC.swift */; };
 		57785AB928B7CAD1007D0C30 /* BMICalculateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57785AB828B7CAD1007D0C30 /* BMICalculateManager.swift */; };
+		57785ABB28B81E3E007D0C30 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57785ABA28B81E3E007D0C30 /* Body.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		570FD99B28B5AAA8006639CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5724ED4A28B695C000329953 /* BmiResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BmiResultVC.swift; sourceTree = "<group>"; };
 		57785AB828B7CAD1007D0C30 /* BMICalculateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMICalculateManager.swift; sourceTree = "<group>"; };
+		57785ABA28B81E3E007D0C30 /* Body.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				57785AB828B7CAD1007D0C30 /* BMICalculateManager.swift */,
+				57785ABA28B81E3E007D0C30 /* Body.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				5724ED4B28B695C000329953 /* BmiResultVC.swift in Sources */,
 				570FD99228B5AAA7006639CB /* ViewController.swift in Sources */,
 				570FD98E28B5AAA7006639CB /* AppDelegate.swift in Sources */,
+				57785ABB28B81E3E007D0C30 /* Body.swift in Sources */,
 				570FD99028B5AAA7006639CB /* SceneDelegate.swift in Sources */,
 				57785AB928B7CAD1007D0C30 /* BMICalculateManager.swift in Sources */,
 			);

@@ -5,12 +5,15 @@
 //  Created by 이정동 on 2022/08/26.
 //
 
-import Foundation
 import UIKit
 
 struct BMICalculatorManager {
     
-    var bmi: Double?
+    private var bmi: Double?
+    
+    func getBMI() -> Double {
+        return bmi ?? 0.0
+    }
     
     func getBMIAdviceString(BMI: Double) -> String {
         if BMI < 18.5 {

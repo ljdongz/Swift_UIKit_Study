@@ -31,8 +31,7 @@ class ViewController: UIViewController {
         guard let height = Double(heightTextField.text!) else { return }
         guard let weight = Double(weightTextField.text!) else { return }
         
-        secondVC.height = height
-        secondVC.weight = weight
+        secondVC.body = Body(weight: weight, height: height)
         
         present(secondVC, animated: true, completion: nil)
     }
