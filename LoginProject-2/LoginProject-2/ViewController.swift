@@ -32,7 +32,6 @@ class ViewController: UIViewController {
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
         emailInfoLabelCenterYConstraint.isActive = true
         passwordInfoLabelCenterYConstraint.isActive = true
         
