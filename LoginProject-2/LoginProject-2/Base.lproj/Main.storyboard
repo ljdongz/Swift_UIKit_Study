@@ -32,7 +32,7 @@
                                                     <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="nif-EX-9U5"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일 주소 또는 전화번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-v0-6Tv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="이메일 주소 또는 전화번호" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxn-v0-6Tv">
                                                 <rect key="frame" x="8" y="13.5" width="338" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -44,7 +44,6 @@
                                             <constraint firstItem="W4r-Nd-04N" firstAttribute="top" secondItem="Poh-iF-v8H" secondAttribute="top" constant="15" id="06g-x0-A9j"/>
                                             <constraint firstAttribute="bottom" secondItem="W4r-Nd-04N" secondAttribute="bottom" constant="2" id="0tx-0l-Ra7"/>
                                             <constraint firstAttribute="trailing" secondItem="W4r-Nd-04N" secondAttribute="trailing" constant="8" id="15h-xG-sib"/>
-                                            <constraint firstItem="Nxn-v0-6Tv" firstAttribute="centerY" secondItem="Poh-iF-v8H" secondAttribute="centerY" id="8R3-kG-gT2"/>
                                             <constraint firstItem="Nxn-v0-6Tv" firstAttribute="leading" secondItem="Poh-iF-v8H" secondAttribute="leading" constant="8" id="BcG-vw-YoA"/>
                                             <constraint firstItem="W4r-Nd-04N" firstAttribute="leading" secondItem="Poh-iF-v8H" secondAttribute="leading" constant="8" id="fnY-hY-FU3"/>
                                             <constraint firstAttribute="trailing" secondItem="Nxn-v0-6Tv" secondAttribute="trailing" constant="8" id="lED-lI-kgf"/>
@@ -68,7 +67,7 @@
                                                     <action selector="textFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="yYT-ZS-gNs"/>
                                                 </connections>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="패스워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l43-01-wpb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="패스워드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l43-01-wpb">
                                                 <rect key="frame" x="8" y="13.5" width="338" height="21.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -79,7 +78,6 @@
                                         <constraints>
                                             <constraint firstItem="Fqz-SZ-S8s" firstAttribute="top" secondItem="ffY-Z0-aYU" secondAttribute="top" constant="15" id="1Ro-Od-gDS"/>
                                             <constraint firstAttribute="trailing" secondItem="l43-01-wpb" secondAttribute="trailing" constant="8" id="5YZ-1h-nhI"/>
-                                            <constraint firstItem="l43-01-wpb" firstAttribute="centerY" secondItem="ffY-Z0-aYU" secondAttribute="centerY" id="BMh-bY-rA2"/>
                                             <constraint firstItem="l43-01-wpb" firstAttribute="leading" secondItem="ffY-Z0-aYU" secondAttribute="leading" constant="8" id="PPC-qh-QAa"/>
                                             <constraint firstAttribute="bottom" secondItem="Fqz-SZ-S8s" secondAttribute="bottom" constant="2" id="hcN-P5-nYu"/>
                                             <constraint firstAttribute="trailing" secondItem="Fqz-SZ-S8s" secondAttribute="trailing" constant="8" id="ipb-lQ-TXj"/>

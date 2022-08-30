@@ -33,6 +33,9 @@ class ViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
+        emailInfoLabelCenterYConstraint.isActive = true
+        passwordInfoLabelCenterYConstraint.isActive = true
+        
     }
     
     @IBAction func textFieldEditingChanged(_ textField: UITextField) {
@@ -67,16 +70,14 @@ extension ViewController: UITextFieldDelegate {
             emailInfoLabel.font = UIFont.systemFont(ofSize: 11)
             // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙에서 위로 13만큼 이동)
             //emailInfoLabelCenterYConstraint.constant = -13
-            emailInfoLabel.centerYAnchor
-                .constraint(equalTo: emailTextFieldView.centerYAnchor)
-                .constant = -13
+            emailInfoLabelCenterYConstraint.constant = -13
         }
         
         if textField == passwordTextField {
             passwordTextFieldView.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 11)
             // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙에서 위로 13만큼 이동)
-            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor).constant = -13
+            passwordInfoLabelCenterYConstraint.constant = -13
         }
         
         // 오토레이아웃이 변경될 때 실행
@@ -98,9 +99,7 @@ extension ViewController: UITextFieldDelegate {
             if textField.text != "" { return }
             emailInfoLabel.font = UIFont.systemFont(ofSize: 18)
             // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙으로 이동)
-            emailInfoLabel.centerYAnchor
-                .constraint(equalTo: emailTextFieldView.centerYAnchor)
-                .constant = 0
+            emailInfoLabelCenterYConstraint.constant = 0
         }
         
         if textField == passwordTextField {
@@ -109,7 +108,7 @@ extension ViewController: UITextFieldDelegate {
             if textField.text != "" { return }
             passwordInfoLabel.font = UIFont.systemFont(ofSize: 18)
             // 오토레이아웃 업데이트 (텍스트필드 뷰의 y축 중앙으로 이동)
-            passwordInfoLabel.centerYAnchor.constraint(equalTo: passwordTextFieldView.centerYAnchor).constant = 0
+            passwordInfoLabelCenterYConstraint.constant = 0
         }
         
         // 오토레이아웃이 변경될 때 실행
