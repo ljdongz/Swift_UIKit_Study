@@ -26,9 +26,16 @@ class ViewController: UIViewController {
         
         // tableView Cell의 높이
         tableView.rowHeight = 120
+        
+        title = "영화 목록"
     }
    
-
+    @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
+        movieDataManager.updateMovieData()
+        
+        tableView.reloadData()
+    }
+    
 }
 
 extension ViewController: UITableViewDataSource {
