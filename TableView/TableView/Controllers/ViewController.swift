@@ -22,6 +22,7 @@ class ViewController: UIViewController {
         //moviesArray = movieDataManager.getMovieData()
         
         tableView.dataSource = self
+        tableView.delegate = self
         
         // tableView Cell의 높이
         tableView.rowHeight = 120
@@ -60,5 +61,24 @@ extension ViewController: UITableViewDataSource {
         //cell.selectionStyle = .none
         
         return cell
+    }
+}
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetailVC", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailVC" {
+            let movieData = movieDataManager.getMovieData()
+            
+            let detailVC = segue.destination as! DetailViewController
+            
+            let indexPath = sender as! IndexPath
+            
+            // 데이터 전달
+            detailVC.movieData = movieData[indexPath.row]
+        }
     }
 }
