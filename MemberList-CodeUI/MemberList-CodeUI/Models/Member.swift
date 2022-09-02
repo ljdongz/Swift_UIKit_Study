@@ -30,8 +30,7 @@ class Member {
     init(name: String?, age: Int?, phone: String?, address: String?) {
 
         // 0일때는 0, 0이 아닐때는 타입저장속성의 절대적 값으로 세팅 (자동순번)
-        self.memberId = Member.memberNumber == 0 ? 0 : Member.memberNumber
-        // self.memberId = Member.memberNumber -> Error?
+        self.memberId = Member.memberNumber
 
         self.name = name
         self.age = age
