@@ -9,6 +9,15 @@ import UIKit
 
 class MemberTableViewCell: UITableViewCell {
     
+    var member: Member? {
+        didSet{
+            // guard let member = member else { return }
+            mainImageView.image = member?.memberImage
+            memberNameLabel.text = member?.name
+            addressLabel.text = member?.address
+        }
+    }
+    
     let mainImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,6 +87,8 @@ class MemberTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.mainImageView.clipsToBounds = true
+        
+        // mainImageView의 정확한 frame 값을 얻기 위해서 값이 결정되는 시점인 layoutSubviews에 구현
         self.mainImageView.layer.cornerRadius = self.mainImageView.frame.width / 2
     }
     

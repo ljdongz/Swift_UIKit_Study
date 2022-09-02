@@ -21,6 +21,8 @@ final class ViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         setupTableViewConstraints()
+        
+        title = "회원 목록"
     }
     
     func setupData() {
@@ -30,6 +32,8 @@ final class ViewController: UIViewController {
     func setupTableView() {
         tableView.dataSource = self
         tableView.rowHeight = 60
+        
+        tableView.register(MemberTableViewCell.self, forCellReuseIdentifier: "MemberCell")
     }
     
     func setupNavigationBar() {
@@ -74,7 +78,20 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath) as! MemberTableViewCell
+        
+        // MemberListManager에서 subScript를 구현했기 때문에 MemberListManager객체에서 인덱스 접근을 통해 membersList에 접근 가능
+//        let member = memberListManager[indexPath.row]
+//        cell.mainImageView.image = member.memberImage
+//        cell.memberNameLabel.text = member.name
+//        cell.addressLabel.text = member.address
+        
+        // 속성 감시자 사용
+        cell.member = memberListManager[indexPath.row]
+        
+        cell.selectionStyle = .none
+        
+        return cell
     }
     
 }
