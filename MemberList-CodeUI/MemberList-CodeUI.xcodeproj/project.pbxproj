@@ -18,6 +18,7 @@
 		57F91FDF28C1BD47008CF9CB /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FDE28C1BD47008CF9CB /* MemberTableViewCell.swift */; };
 		57F91FE128C2E2C1008CF9CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FE028C2E2C1008CF9CB /* DetailViewController.swift */; };
 		57F91FE328C2E2EC008CF9CB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FE228C2E2EC008CF9CB /* DetailView.swift */; };
+		57F91FE528C37B20008CF9CB /* MemberDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FE428C37B20008CF9CB /* MemberDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		57F91FDE28C1BD47008CF9CB /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 		57F91FE028C2E2C1008CF9CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		57F91FE228C2E2EC008CF9CB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		57F91FE428C37B20008CF9CB /* MemberDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				57F91FDA28C17788008CF9CB /* Member.swift */,
 				57F91FDC28C1B539008CF9CB /* MemberListManager.swift */,
+				57F91FE428C37B20008CF9CB /* MemberDelegate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				57F91FC428C17490008CF9CB /* AppDelegate.swift in Sources */,
 				57F91FC628C17490008CF9CB /* SceneDelegate.swift in Sources */,
 				57F91FDB28C17788008CF9CB /* Member.swift in Sources */,
+				57F91FE528C37B20008CF9CB /* MemberDelegate.swift in Sources */,
 				57F91FE128C2E2C1008CF9CB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -72,11 +72,11 @@ final class ViewController: UIViewController {
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//
+//        tableView.reloadData()
+//    }
 
 }
 
@@ -108,6 +108,7 @@ extension ViewController: UITableViewDataSource {
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
+        detailVC.delegate = self
         
         let member = memberListManager[indexPath.row]
         
@@ -115,4 +116,18 @@ extension ViewController: UITableViewDelegate {
         
         navigationController?.pushViewController(detailVC, animated: true)
     }
+}
+
+extension ViewController: MemberDelegate {
+    func addNewMember(_ member: Member) {
+        memberListManager.makeNewMember(member)
+        tableView.reloadData()
+    }
+    
+    func update(index: Int, _ member: Member) {
+        memberListManager.updateMemberInfo(index: index, member)
+        tableView.reloadData()
+    }
+    
+    
 }

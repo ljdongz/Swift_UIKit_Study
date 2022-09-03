@@ -7,7 +7,10 @@
 
 import UIKit
 
-class Member {
+
+
+
+class Member  {
     
     lazy var memberImage: UIImage? = {
         // member의 이름이 존재하면
