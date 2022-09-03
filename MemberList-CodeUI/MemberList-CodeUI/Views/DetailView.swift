@@ -271,6 +271,7 @@ class DetailView: UIView {
         
         backgroundColor = .white
         setupStackView()
+        setupNotification()
     }
     
     required init?(coder: NSCoder) {
@@ -284,6 +285,14 @@ class DetailView: UIView {
     override func updateConstraints() {
         setConstraints()
         super.updateConstraints()
+    }
+    
+    func setupNotification() {
+        // 키보드가 올라올 때 알림을 받을 수 있도록 Notification 설정
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(moveUpAction), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default
+            .addObserver(self, selector: #selector(moveDownAction), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     func setConstraints() {
@@ -322,6 +331,27 @@ class DetailView: UIView {
             mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20)
 //            mainStackView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+    }
+    
+    @objc func moveUpAction() {
+        mainStackViewTopConstraint.constant = -20
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    @objc func moveDownAction() {
+        mainStackViewTopConstraint.constant = 10
+        UIView.animate(withDuration: 0.2) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default
+            .removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default
+            .removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
 }

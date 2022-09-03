@@ -121,6 +121,10 @@ final class DetailViewController: UIViewController {
         // (일처리를 다한 후에) 전화면으로 돌아가기
         self.navigationController?.popViewController(animated: true)
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        detailView.endEditing(true)
+    }
 
 }
 
