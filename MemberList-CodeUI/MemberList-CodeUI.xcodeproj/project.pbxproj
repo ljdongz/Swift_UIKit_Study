@@ -16,6 +16,8 @@
 		57F91FDB28C17788008CF9CB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FDA28C17788008CF9CB /* Member.swift */; };
 		57F91FDD28C1B539008CF9CB /* MemberListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FDC28C1B539008CF9CB /* MemberListManager.swift */; };
 		57F91FDF28C1BD47008CF9CB /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FDE28C1BD47008CF9CB /* MemberTableViewCell.swift */; };
+		57F91FE128C2E2C1008CF9CB /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FE028C2E2C1008CF9CB /* DetailViewController.swift */; };
+		57F91FE328C2E2EC008CF9CB /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F91FE228C2E2EC008CF9CB /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		57F91FDA28C17788008CF9CB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		57F91FDC28C1B539008CF9CB /* MemberListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListManager.swift; sourceTree = "<group>"; };
 		57F91FDE28C1BD47008CF9CB /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		57F91FE028C2E2C1008CF9CB /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		57F91FE228C2E2EC008CF9CB /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				57F91FC728C17490008CF9CB /* ViewController.swift */,
+				57F91FE028C2E2C1008CF9CB /* DetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 			children = (
 				57F91FC928C17490008CF9CB /* Main.storyboard */,
 				57F91FDE28C1BD47008CF9CB /* MemberTableViewCell.swift */,
+				57F91FE228C2E2EC008CF9CB /* DetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,11 +178,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				57F91FDD28C1B539008CF9CB /* MemberListManager.swift in Sources */,
+				57F91FE328C2E2EC008CF9CB /* DetailView.swift in Sources */,
 				57F91FDF28C1BD47008CF9CB /* MemberTableViewCell.swift in Sources */,
 				57F91FC828C17490008CF9CB /* ViewController.swift in Sources */,
 				57F91FC428C17490008CF9CB /* AppDelegate.swift in Sources */,
 				57F91FC628C17490008CF9CB /* SceneDelegate.swift in Sources */,
 				57F91FDB28C17788008CF9CB /* Member.swift in Sources */,
+				57F91FE128C2E2C1008CF9CB /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
