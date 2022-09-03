@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 final class DetailViewController: UIViewController {
 
@@ -22,6 +23,9 @@ final class DetailViewController: UIViewController {
 
         setupUpdateButtonAction()
         setupData()
+        
+        // 제스처 호출
+        setupTapGesture()
     }
     
     func setupData() {
@@ -30,6 +34,32 @@ final class DetailViewController: UIViewController {
     
     func setupUpdateButtonAction() {
         detailView.updateButton.addTarget(self, action: #selector(updateButtonTapped), for: .touchUpInside)
+    }
+    
+    // 이미지 뷰가 눌렸을 때의 동작(제스처) 설정
+    func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchUpImageView))
+        detailView.mainImageView.addGestureRecognizer(tapGesture)
+        detailView.mainImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func touchUpImageView() {
+        print("이미지뷰 터치")
+        setupImagePicker()
+    }
+    
+    func setupImagePicker() {
+        // 기본설정 셋팅
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 0    // 사진을 가져올 수 있는 개수 제한 없음
+        configuration.filter = .any(of: [.images, .videos])
+        
+        // 기본설정을 가지고, 피커뷰컨트롤러 생성
+        let picker = PHPickerViewController(configuration: configuration)
+        // 피커뷰 컨트롤러의 대리자 설정
+        picker.delegate = self
+        // 피커뷰 띄우기
+        self.present(picker, animated: true, completion: nil)
     }
     
     @objc func updateButtonTapped() {
@@ -92,4 +122,29 @@ final class DetailViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 
+}
+
+
+extension DetailViewController: PHPickerViewControllerDelegate {
+    
+    // 사진첩에서 사진이 선택이 된 후에 호출되는 메서드
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        // 피커뷰 dismiss
+        picker.dismiss(animated: true)
+        
+        let itemProvider = results.first?.itemProvider
+        
+        if let itemProvider = itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                DispatchQueue.main.async {
+                    // 이미지뷰에 표시
+                    self.detailView.mainImageView.image = image as? UIImage
+                }
+            }
+        } else {
+            print("이미지 선택 취소")
+        }
+    }
+    
+    
 }
