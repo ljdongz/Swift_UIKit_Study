@@ -12,7 +12,7 @@ final class ViewController: UIViewController {
     // 테이블 뷰 자체는 특별한 기능이 없기 때문에 따로 뷰를 만들지 않음
     private let tableView = UITableView()
     
-    private let memberListManager = MemberListManager()
+    let memberListManager = MemberListManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +67,15 @@ final class ViewController: UIViewController {
     }
     
     @objc func barButtonTapped() {
+        let detailVC = DetailViewController()
         
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
 
 }
