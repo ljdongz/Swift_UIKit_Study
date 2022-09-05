@@ -108,7 +108,7 @@ class LoginView: UIView {
     }()
     
     // MARK: - 로그인 버튼
-    private lazy var loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.layer.cornerRadius = 5
@@ -139,7 +139,7 @@ class LoginView: UIView {
     }()
     
     // MARK: - 비밀번호 재설정 버튼
-    private lazy var passwordResetButton: UIButton = {
+    let passwordResetButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
         button.setTitle("비밀번호 재설정", for: .normal)
