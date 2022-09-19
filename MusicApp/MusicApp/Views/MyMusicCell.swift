@@ -27,6 +27,13 @@ class MyMusicCell: UITableViewCell {
         }
     }
     
+    // 셀이 재사용되기 전에 호출되는 메서드
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        // 일반적으로 이미지가 바뀌는 것처럼 보이는 현상을 없애기 위해서 실행 ⭐️
+        self.mainImageView.image = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,6 +43,7 @@ class MyMusicCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        mainImageView.contentMode = .scaleToFill
     }
     
     // 이미지 다운

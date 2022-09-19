@@ -9,7 +9,7 @@ import UIKit
 
 // 구조체 또는 열거형 형식으로 Name Space 설정
 public struct Cell {
-    static let musicCellIdentifier = "MusicCell"
+    static let musicCellIdentifier = "MyMusicCell"
     static let musicCollectionViewCellIdentifier = "MusicCollectionViewCell"
     
     // 생성할 수 없도록 막아놈 (타입 저장 속성에만 접근하도록)
@@ -17,7 +17,7 @@ public struct Cell {
 }
 
 //public enum Cell {
-//    static let musicCellIdentifier = "MusicCell"
+//    static let musicCellIdentifier = "MyMusicCell"
 //    static let musicCollectionViewCellIdentifier = "MusicCollectionViewCell"
 //}
 

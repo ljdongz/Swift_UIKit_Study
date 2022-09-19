@@ -22,6 +22,8 @@ class NetworkManager {
     typealias NetworkCompletion = (Result<[Music], NetworkError>) -> Void
     
     // 음악 데이터 가져오기
+    // 1. fetchMusic 안에 비동기 처리(performRequest 함수 내에 있는 dataTask 함수)가 포함되어 있음
+    // 2. fetchMusic 함수를 호출할 때 콜백 함수를 정의하기 위해 fetchMusic의 매개변수에 콜백함수 전달
     func fetchMusic(searchTerm: String, completion: @escaping NetworkCompletion) {
         let urlString = "\(MusicApi.requestUrl)\(MusicApi.mediaParam)&term=\(searchTerm)"
         print(urlString)
