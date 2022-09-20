@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var musicTableView: UITableView!
     
+    let searchController = UISearchController()
+    
     var networkManager = NetworkManager.shared
     
     var musicArray: [Music] = []
@@ -19,8 +21,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupSearchBar()
         setupTableView()
         setupData()
+    }
+    
+    func setupSearchBar() {
+        self.title = "Music Search"
+        navigationItem.searchController = searchController
+        
+        // 1) (단순)서치바 사용
+        searchController.searchBar.delegate = self
+        
+        // 2) 서치(결과)컨트롤러 사용 (복잡한 구현 가능)
+        //      -> 글자마다 검색 기능 + 새로운 화면을 보여주는 기능
+        //searchController.searchResultsUpdater = self
+        
+        // 첫 글자 대문자 설정 제거
+        searchController.searchBar.autocapitalizationType = .none
     }
 
     func setupTableView() {
@@ -83,3 +101,55 @@ extension ViewController: UITableViewDelegate {
 //        return UITableView.automaticDimension
 //    }
 }
+
+extension ViewController: UISearchBarDelegate {
+
+    // 유저가 글자를 입력하는 순간마다 호출되는 메서드
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        print(searchText)
+        // 다시 빈 배열로 만들기 ⭐️
+        self.musicArray = []
+
+        // 네트워킹 시작
+        networkManager.fetchMusic(searchTerm: searchText) { result in
+            switch result {
+            case .success(let musicDatas):
+                // 검색 결과를 배열에 담음
+                self.musicArray = musicDatas
+                DispatchQueue.main.async {
+                    self.musicTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+
+    // 검색(Search) 버튼을 눌렀을때 호출되는 메서드
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // 서치바에 입력된 텍스트
+        guard let text = searchController.searchBar.text else {
+            return
+        }
+        print(text)
+        // 다시 빈 배열로 만들기 ⭐️
+        self.musicArray = []
+
+        // 네트워킹 시작
+        networkManager.fetchMusic(searchTerm: text) { result in
+            switch result {
+            case .success(let musicDatas):
+                self.musicArray = musicDatas
+                DispatchQueue.main.async {
+                    self.musicTableView.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        // 키보드 내려감
+        self.view.endEditing(true)
+    }
+}
+
