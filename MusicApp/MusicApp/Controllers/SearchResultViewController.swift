@@ -45,7 +45,6 @@ class SearchResultViewController: UIViewController {
         collectionView.backgroundColor = .white
         
         collectionView.dataSource = self
-        collectionView.delegate = self
         
         // 스크롤 방향
         flowLayout.scrollDirection = .vertical
@@ -71,7 +70,7 @@ class SearchResultViewController: UIViewController {
         print("네트워킹 시작 단어 \(term)")
         
         // (네트워킹 시작전에) 다시 빈배열로 만들기
-        self.musicArrays = []
+        //self.musicArrays = []
         
         // 네트워킹 시작 (찾고자하는 단어를 가지고)
         networkManager.fetchMusic(searchTerm: term) { result in
@@ -90,19 +89,18 @@ class SearchResultViewController: UIViewController {
     }
 }
 
-extension SearchResultViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    // Delegate
-    
-    
+extension SearchResultViewController: UICollectionViewDataSource {
     // DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return musicArrays.count
+        print(#function)
+        return self.musicArrays.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print(#function)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Cell.musicCollectionViewCellIdentifier, for: indexPath) as! MusicCollectionViewCell
         
-        cell.imageUrl = musicArrays[indexPath.row].imageUrl
+        cell.imageUrl = musicArrays[indexPath.item].imageUrl
         
         return cell
     }

@@ -77,18 +77,23 @@ extension ViewController: UITableViewDataSource {
         return self.musicArray.count
     }
     
+    // cellForRowAt에서 네트워킹 작업을 직접 하지 않고 cell에 url만 전달해주면서 cell에서 네트워킹 작업
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = musicTableView.dequeueReusableCell(withIdentifier: Cell.musicCellIdentifier, for: indexPath) as! MyMusicCell
         
         let musicData = musicArray[indexPath.row]
         
+        print("cell.imageUrl = musicData.imageUrl 시작")
         cell.imageUrl = musicData.imageUrl
+        print("cell.imageUrl = musicData.imageUrl 끝")
         cell.albumNameLabel.text = musicData.albumName
         cell.artistNameLabel.text = musicData.artistName
         cell.songNameLabel.text = musicData.songName
         cell.releaseDateLabel.text = musicData.releaseDateString
         
         cell.selectionStyle = .none
+        
+        print("return cell")
         return cell
     }
     

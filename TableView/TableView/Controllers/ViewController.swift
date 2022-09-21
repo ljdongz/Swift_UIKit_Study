@@ -33,6 +33,7 @@ class ViewController: UIViewController {
     @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
         movieDataManager.updateMovieData()
         
+        print("reloadData")
         tableView.reloadData()
     }
     

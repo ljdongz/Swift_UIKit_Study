@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 //MARK: - 데이터 모델
 
 // 실제 API에서 받게 되는 정보
