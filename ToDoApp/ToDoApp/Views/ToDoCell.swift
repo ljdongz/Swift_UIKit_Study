@@ -7,6 +7,11 @@
 
 import UIKit
 
+//protocol UpdateButtonProtocol: AnyObject {
+//    func updateButtonTapped(cell: ToDoCell)
+//}
+
+
 class ToDoCell: UITableViewCell {
 
     @IBOutlet weak var bgView: UIView!
@@ -17,6 +22,10 @@ class ToDoCell: UITableViewCell {
     
     @IBOutlet weak var updateButton: UIButton!
     
+    
+    //weak var delegate: UpdateButtonProtocol?
+    
+    
     var todoData: MemoData? {
         didSet {
             configureUIwithData()
@@ -24,8 +33,9 @@ class ToDoCell: UITableViewCell {
     }
     
     // (델리게이트 대신에) 실행하고 싶은 클로저 저장
-    // 뷰컨트롤러에 있는 클로저 저장할 예정 (셀(자신)을 전달)
-    var updateButtonPressed: (ToDoCell) -> Void = { (sender) in }
+    // 옵셔널 타입 대신 초기값을 설정
+    // 2) ViewController에서 클로저 전달 받음
+    var updateButtonPressed: () -> Void = {  }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,7 +72,11 @@ class ToDoCell: UITableViewCell {
     
     
     @IBAction func updateButtonTapped(_ sender: UIButton) {
-        updateButtonPressed(self)
+        // 클로저 방식 (self = ToDoCell)
+        updateButtonPressed()
+        
+        // 커스텀 델리게이트 (뷰컨트롤러에서 프로토콜 채택 후 프로토콜 메서드 구현)
+        //delegate?.updateButtonTapped(cell: self)
     }
     
 }

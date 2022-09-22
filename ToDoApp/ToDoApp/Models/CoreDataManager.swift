@@ -126,7 +126,7 @@ final class CoreDataManager {
     // MARK: - [Update] 코어데이터에서 데이터 수정하기 (일치하는 데이터 찾아서 ===> 수정)
     func updateToDo(newToDoData: MemoData, completion: @escaping () -> Void) {
         // 날짜 옵셔널 바인딩
-        guard let date = newMemoData.date else {
+        guard let date = newToDoData.date else {
             completion()
             return
         }
@@ -145,7 +145,7 @@ final class CoreDataManager {
                     if var targetToDo = fetchedToDoList.first {
                         
                         // MARK: - MemoData에 실제 데이터 재할당(바꾸기) ⭐️
-                        targetToDo = newMemoData
+                        targetToDo = newToDoData
                         
                         //appDelegate?.saveContext() // 앱델리게이트의 메서드로 해도됨
                         if context.hasChanges {
