@@ -13,6 +13,8 @@ enum MyColor: Int64 {
     case blue   = 3
     case purple = 4
     
+    // hexString 사용하고 싶을 시 UIColor에 hexString 추가 설정 필요
+    
     var backgoundColor: UIColor {
         switch self {
         case .red:

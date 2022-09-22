@@ -35,7 +35,7 @@ class ToDoCell: UITableViewCell {
     // (델리게이트 대신에) 실행하고 싶은 클로저 저장
     // 옵셔널 타입 대신 초기값을 설정
     // 2) ViewController에서 클로저 전달 받음
-    var updateButtonPressed: () -> Void = {  }
+    var updateButtonPressed: () -> Void = { }
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -20,6 +20,7 @@
 		574DE29928DB5183009DE70B /* MyColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DE29828DB5183009DE70B /* MyColor.swift */; };
 		574DE29B28DB56D2009DE70B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DE29A28DB56D2009DE70B /* CoreDataManager.swift */; };
 		574DE29D28DB570D009DE70B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574DE29C28DB570D009DE70B /* DetailViewController.swift */; };
+		57BE869B28DC36F900B9B079 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BE869A28DC36F900B9B079 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		574DE29828DB5183009DE70B /* MyColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyColor.swift; sourceTree = "<group>"; };
 		574DE29A28DB56D2009DE70B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		574DE29C28DB570D009DE70B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		57BE869A28DC36F900B9B079 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				574DE29828DB5183009DE70B /* MyColor.swift */,
+				57BE869A28DC36F900B9B079 /* UIColor+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				574DE29428DB4BD2009DE70B /* ViewController.swift in Sources */,
 				5749408B28DB352800C83464 /* MemoData+CoreDataClass.swift in Sources */,
 				574DE29628DB4E28009DE70B /* ToDoCell.swift in Sources */,
+				57BE869B28DC36F900B9B079 /* UIColor+Extension.swift in Sources */,
 				5749407128DB2F3F00C83464 /* AppDelegate.swift in Sources */,
 				5749408C28DB352800C83464 /* MemoData+CoreDataProperties.swift in Sources */,
 				574DE29928DB5183009DE70B /* MyColor.swift in Sources */,
