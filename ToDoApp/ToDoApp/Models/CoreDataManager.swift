@@ -63,9 +63,6 @@ final class CoreDataManager {
                 }
              }
              */
-            context.perform {
-                
-            }
             
             // 임시저장소에 있는 데이터를 그려줄 형태 파악하기
             if let entity = NSEntityDescription.entity(forEntityName: self.modelName, in: context) {
