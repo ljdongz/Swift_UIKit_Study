@@ -14,6 +14,7 @@ enum Rps: Int {
     case paper
     case ready
     
+    // UIImage와 String 데이터 타입을 갖는 튜플 rpsInfo
     var rpsInfo: (image: UIImage, name: String) {
         switch self {
         case .rock :
