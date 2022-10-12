@@ -97,6 +97,28 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
     
+    // tableView cell 클릭 이벤트
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let musicData = musicArray[indexPath.row]
+
+        let detailVC = storyboard?.instantiateViewController(withIdentifier: "detailVC")
+                as! DetailViewController
+
+/*      위와 동일
+        guard let secondVC = storyboard?.instantiateViewController(withIdentifier: "secondVC")
+                as? SecondViewController else { return }       */
+        
+                // 데이터 전달
+        print(musicData.songName!)
+        detailVC.someString = musicData.songName
+
+        // secondVC.mainLabel.text = "Second"
+              // Error (secondVC.mainLabel이 메모리에 올라가기 전 상태에서 접근하려 하기 때문)
+        
+                // 화면 이동
+        //present(detailVC, animated: true, completion: nil)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
     
 }
 
