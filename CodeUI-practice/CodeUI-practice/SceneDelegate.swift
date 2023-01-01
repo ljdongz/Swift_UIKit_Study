@@ -19,14 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        window = UIWindow(windowScene: windowScene)
-        //window = UIWindow(frame: UIScreen.main.bounds)
-        
-        let viewController = ViewController()   // 처음 보일 View Controller
-        
-        window?.rootViewController = viewController // 첫 화면으로 띄우기
-        window?.makeKeyAndVisible() // 화면에 보이게끔 설정
-        window?.windowScene = windowScene
+//        window = UIWindow(windowScene: windowScene)
+//        //window = UIWindow(frame: UIScreen.main.bounds)
+//
+//        let viewController = ViewController()   // 처음 보일 View Controller
+//
+//        window?.rootViewController = viewController // 첫 화면으로 띄우기
+//        window?.makeKeyAndVisible() // 화면에 보이게끔 설정
+//        window?.windowScene = windowScene
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

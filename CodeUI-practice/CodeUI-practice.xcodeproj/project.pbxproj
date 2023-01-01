@@ -77,6 +77,7 @@
 		57F09CA1295EF4A90001369E /* CodeUI-practice */ = {
 			isa = PBXGroup;
 			children = (
+				57F09CBD29608E040001369E /* Views */,
 				57F09CBC295F23BF0001369E /* Extensions */,
 				57F09CA2295EF4A90001369E /* AppDelegate.swift */,
 				57F09CA4295EF4A90001369E /* SceneDelegate.swift */,
@@ -85,7 +86,6 @@
 				57F09CAB295EF4AA0001369E /* Assets.xcassets */,
 				57F09CAD295EF4AA0001369E /* LaunchScreen.storyboard */,
 				57F09CB0295EF4AA0001369E /* Info.plist */,
-				57F09CBA295F23480001369E /* StackView.swift */,
 			);
 			path = "CodeUI-practice";
 			sourceTree = "<group>";
@@ -97,6 +97,14 @@
 				57F09CB8295F230C0001369E /* UIView+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		57F09CBD29608E040001369E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				57F09CBA295F23480001369E /* StackView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FEBB155FC2B6FFC4C939BBDB /* Pods */ = {
