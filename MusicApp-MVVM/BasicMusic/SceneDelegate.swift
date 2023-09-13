@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  AutoLayout-practice
+//  BasicMusic
 //
-//  Created by 이정동 on 2023/01/02.
+//  Created by Allen H on 2022/12/13.
 //
 
 import UIKit

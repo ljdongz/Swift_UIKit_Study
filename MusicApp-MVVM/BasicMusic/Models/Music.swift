@@ -1,15 +1,11 @@
 //
 //  Music.swift
-//  MusicApp
+//  BasicMusic
 //
-//  Created by 이정동 on 2022/09/18.
+//  Created by Allen H on 2022/12/13.
 //
 
 import Foundation
-import UIKit
-//MARK: - 데이터 모델
-
-// 실제 API에서 받게 되는 정보
 
 struct MusicData: Codable {
     let resultCount: Int
@@ -20,10 +16,19 @@ struct Music: Codable {
     let songName: String?
     let artistName: String?
     let albumName: String?
-    
+    let imageUrl: String?
+
     enum CodingKeys: String, CodingKey {
         case songName = "trackName"
         case artistName
         case albumName = "collectionName"
+        case imageUrl = "artworkUrl100"
     }
+}
+
+
+enum NetworkError: Error {
+    case networkingError
+    case dataError
+    case parseError
 }
